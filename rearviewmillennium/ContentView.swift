@@ -64,7 +64,7 @@ struct ContentView: View {
                 Text(ascii)
                     .font(.system(size: 7, design: .monospaced))
                     .foregroundColor(.green)
-                    .multilineTextAlignment(.center)
+                    .multilineTextAlignment(.leading)
                     .lineSpacing(0)
                     .frame(
                         width: geometry.size.width - 48,
@@ -97,7 +97,8 @@ struct ContentView: View {
                         showScene(choice: 0)
                     }) {
                         Text(leftText)
-                            .font(.system(size: 14))
+                            .bold()
+                            .font(.system(size: 16))
                             .foregroundColor(.black)
                             .frame(
                                 maxWidth: .infinity,
@@ -114,6 +115,7 @@ struct ContentView: View {
                         exitApp()
                     }) {
                         Text("EXIT")
+                            .bold()
                             .font(.system(size: 10))
                             .foregroundColor(.blue)
                             .frame(
@@ -128,7 +130,8 @@ struct ContentView: View {
                         showScene(choice: 1)
                     }) {
                         Text(rightText)
-                            .font(.system(size: 14))
+                            .bold()
+                            .font(.system(size: 16))
                             .foregroundColor(.black)
                             .frame(
                                 maxWidth: .infinity,

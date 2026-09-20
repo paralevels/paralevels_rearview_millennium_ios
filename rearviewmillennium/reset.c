@@ -1,0 +1,41 @@
+#include <stdio.h>
+
+/*
+ * Resets curr to the scene currently being displayed.
+ *
+ * genscene() stores the NEXT scene number in curr.
+ * When EXIT is pressed, decrement curr by 1 so that the
+ * next launch regenerates the scene that was on screen.
+ */
+void exit_reset_curr(const char *base_dir)
+{
+    char curr_path[512];
+    snprintf(curr_path, sizeof(curr_path), "%s/curr", base_dir);
+
+    // Read current value from curr
+    FILE *curr_file = fopen(curr_path, "r");
+    if (!curr_file) {
+        return;
+    }
+
+    int current;
+
+    if (fscanf(curr_file, "%d", &current) != 1) {
+        fclose(curr_file);
+        return;
+    }
+
+    fclose(curr_file);
+
+    // Decrement
+    current--;
+
+    // Write reset value back to curr
+    curr_file = fopen(curr_path, "w");
+    if (!curr_file) {
+        return;
+    }
+
+    fprintf(curr_file, "%d\n", current);
+    fclose(curr_file);
+}
